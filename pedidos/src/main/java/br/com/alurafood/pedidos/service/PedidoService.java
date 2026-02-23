@@ -57,7 +57,7 @@ public class PedidoService {
         }
 
         pedido.setStatus(dto.getStatus());
-        repository.atualizaStatus(dto.getStatus, pedido);
+        repository.atualizaStatus(dto.getStatus(), pedido);
         return modelMapper.map(pedido, PedidoDto.class);
     }
 

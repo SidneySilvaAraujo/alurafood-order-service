@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -34,7 +35,7 @@ public class PedidoController {
     public ResponseEntity<PedidoDto> realizaPedido(@RequestBody @Valid PedidoDto dto, UriComponentsBuilder uribuilder) {
         PedidoDto pedidoRealizado = service.criarPedido(dto);
 
-        Uri endereco = uribuilder.path("/pedidos/{id}").buildAndExpand(pedidoRealizado.getId()).toUri();
+        URI endereco = uribuilder.path("/pedidos/{id}").buildAndExpand(pedidoRealizado.getId()).toUri();
 
         return ResponseEntity.created(endereco).body(pedidoRealizado);
     }
